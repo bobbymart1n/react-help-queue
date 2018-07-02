@@ -1,14 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Ticket from './Ticket';
 
 
-function TicketList(){
+function TicketList(props){
   return (
-    <Ticket
-      location="3A"
-      names="Thato and Haley"
-      issue="Firebase will not save record!" />
+    <div>
+      {props.ticketList.map((ticket) =>
+        <Ticket names={ticket.names}
+          location={ticket.location}
+          issue={ticket.issue}
+          key={ticket.id}/>
+      )}
+    </div>
   );
 }
+
+TicketList.propTypes = {
+  ticketList: PropTypes.array
+};
 
 export default TicketList;
