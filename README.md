@@ -1,5 +1,5 @@
 # Help Queue React App
-**A webpack setup / first React application for Epicodus 06.24.18**
+**A webpack setup / first React application for Epicodus 07.09.18**
 
 ## By Bobby Martin
 
