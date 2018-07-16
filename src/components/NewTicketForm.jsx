@@ -1,8 +1,6 @@
 import React from 'react';
-import Moment from 'moment';
 import { connect } from 'react-redux';
-import { v4 } from 'uuid';
-
+import { addTicket } from './../actions';
 
 function NewTicketForm(props){
   const formStyles = {
@@ -13,27 +11,26 @@ function NewTicketForm(props){
   };
   const inputFields = {
     margin: '10px 0',
-    height: '50px',
-    border: 'none',
-    borderRadius: '10px',
-    backgroundColor: '#ccc'
+    height: '40px',
+    fontSize: '1em',
+    border: '2px solid #000',
+    padding: '10px',
+    borderRadius: '10px'
   };
+  const button = {
+    padding: '10px',
+    fontSize: '1em',
+    borderRadius: '10px',
+    backgroundColor: 'steelblue',
+    color: 'white'
+  }
   let _names = null;
   let _location = null;
   let _issue = null;
   function handleNewTicketFormSubmission(event) {
     const { dispatch } = props;
     event.preventDefault();
-    const action = {
-      type: 'ADD_TICKET',
-      id: v4(),
-      names: _names.value,
-      location: _location.value,
-      issue: _issue.value,
-      timeOpen: new Moment(),
-      formattedWaitTime: new Moment().fromNow(true)
-    };
-    dispatch(action);
+    dispatch(addTicket(_names.value, _location.value, _issue.value));
     _names.value = '';
     _location.value = '';
     _issue.value = '';
@@ -60,7 +57,9 @@ function NewTicketForm(props){
           id='issue'
           placeholder='Describe your issue.'
           ref={(textarea) => {_issue = textarea;}}/>
-        <button type='submit'>Help!</button>
+        <button
+          style={button}
+          type='submit'>Help!</button>
       </form>
     </div>
   );
