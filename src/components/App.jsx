@@ -40,10 +40,10 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path='/' render={()=><TicketList
-              ticketList={this.props.masterTicketList} />} />
+            ticketList={this.props.masterTicketList} />} />
           <Route path='/newticket' render={()=><NewTicketControl />} />
           <Route path='/admin' render={(props)=><Admin
-              currentRouterPath={props.location.pathname} />} />
+            currentRouterPath={props.location.pathname} />} />
           <Route component={Error404} />
         </Switch>
       </div>
@@ -57,5 +57,5 @@ const mapStateToProps = state => {
 };
 App.propTypes = {
   masterTicketList: PropTypes.object
-}
+};
 export default withRouter(connect(mapStateToProps)(App));
